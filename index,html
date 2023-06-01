@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Gecoin - Website Under Construction</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #eaf3e9;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    .container {
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 36px;
+      font-weight: bold;
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    p {
+      font-size: 18px;
+      color: #666;
+      margin-bottom: 20px;
+      font-weight: bold;
+    }
+
+    .telegram-link {
+      font-weight: bold;
+      color: blue;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Gecoin</h1>
+    <p>Website Under Construction</p >
+    <p>
+      Join our Telegram group:
+      <a class="telegram-link" href=" ">t.me/GeCoinArmy</a >
+    </p >
+  </div>
+</body>
+</html>
