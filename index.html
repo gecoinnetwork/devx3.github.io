@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NB</title>
+    <!-- 添加favicon图标 -->
+    <link rel="icon" href="img/favicon.png" type="image/png">
+    <style>
+        @font-face {
+            font-family: 'Font Awesome';
+            src: url('fonts/fontawesome-webfont.ttf') format('truetype'),
+                 url('fonts/fontawesome-webfont.woff') format('woff'),
+                 url('fonts/fontawesome-webfont.woff2') format('woff2');
+            /* Add more font formats if needed */
+        }
+
+        /* Rest of your CSS styles here */
+
+        body, html {
+            /* Your styles */
+        }
+
+        /* Other styles and media queries */
+
+    </style>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-image: url("img/scenic_view.jpg");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .logo {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            z-index: 1;
+        }
+
+        .center-image {
+            max-width: 66.6667vw; /* 屏幕的三分之二宽度 */
+            height: 33.3333vh; /* 屏幕的三分之一高度 */
+            display: block;
+            margin: auto;
+            z-index: 0;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .button-icon {
+            width: 100px;
+            height: 100px;
+            margin: 10px;
+        }
+
+        /* 自适应调整样式 */
+        @media (max-width: 768px) {
+            .center-image {
+                max-width: 80vw;
+                height: 40vh;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .center-image {
+                max-width: 90vw;
+                height: 45vh;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="logo">
+        <img src="img/logo.png" alt="Logo" width="180" height="180">
+    </div>
+    <img class="center-image" src="img/juzhong.png" alt="Centered Image">
+    <div class="buttons">
+        <a href="https://bscscan.com/token/0x505EA7da41bEaC51AAa360128c392144E80539C5">
+            <img class="button-icon" src="img/bsc.png" alt="Button 1">
+        </a>
+        <a href="https://twitter.com/NiubiOfficial/">
+            <img class="button-icon" src="img/twitter.png" alt="Button 2">
+        </a>
+        <a href="https://t.me/NiubiOfficial/">
+            <img class="button-icon" src="img/telegram.png" alt="Button 3">
+    </div>
+</body>
+</html
