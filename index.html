@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ratking Mint Progress</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background: #f0f0f0;
+        padding: 20px;
+        text-align: center;
+    }
+    h1 {
+        margin-bottom: 10px;
+    }
+    .mint-info {
+        margin-bottom: 20px;
+        font-size: 16px;
+        color: #333;
+        line-height: 1.5;
+    }
+    .progress-container {
+        width: 80%;
+        background: #ddd;
+        border-radius: 25px;
+        overflow: hidden;
+    }
+    .progress-bar {
+        height: 30px;
+        width: 0%;
+        background: #4caf50;
+        text-align: center;
+        color: white;
+        line-height: 30px;
+        font-weight: bold;
+        transition: width 0.5s, background 0.5s;
+    }
+</style>
+</head>
+<body>
+<h1>Ratking Mint Progress</h1>
+
+<div class="mint-info">
+    玩家向合约 <strong>0x5cfe7b37876a2badbe362d59ae624f2f3450a886</strong> 转账 <strong>0.1 OKB</strong> 即可触发 Mint。<br>
+    每个地址 <strong>只能 Mint 一份</strong>，每份可获得 <strong>100,000 Ratking</strong> 代币，总共可 Mint 5000 份。<br>
+    页面将实时显示当前 Mint 进度。
+</div>
+
+<div class="progress-container">
+    <div class="progress-bar" id="progress-bar">0%</div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/ethers/dist/ethers.min.js"></script>
+<script>
+const CONTRACT_ADDRESS = "0x5cfe7b37876a2badbe362d59ae624f2f3450a886";
+const ABI = [
+    "function minted() view returns (uint256)",
+    "function mintLimit() view returns (uint256)"
+];
+
+// OKB Chain 公共 RPC
+const RPC_URL = "https://exchainrpc.okex.org";
+
+const provider = new ethers.JsonRpcProvider(RPC_URL);
+const contract = new ethers.Contract(CONTRACT_ADDRESS, ABI, provider);
+
+async function updateProgress() {
+    try {
+        const minted = await contract.minted();
+        const mintLimit = await contract.mintLimit();
+        let percentage = Number(minted) / Number(mintLimit) * 100;
+
+        const progressBar = document.getElementById("progress-bar");
+
+        if (percentage >= 100) {
+            percentage = 100;
+            progressBar.style.background = "#888"; // 完成后变灰
+            progressBar.textContent = "Mint 完成";
+        } else {
+            progressBar.style.background = "#4caf50";
+            progressBar.textContent = percentage.toFixed(2) + "%";
+        }
+
+        progressBar.style.width = percentage + "%";
+    } catch (err) {
+        console.error("读取进度失败:", err);
+    }
+}
+
+// 每 10 秒刷新一次
+updateProgress();
+setInterval(updateProgress, 10000);
+</script>
+</body>
+</html>
